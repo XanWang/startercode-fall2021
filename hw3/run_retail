@@ -1,4 +1,10 @@
 # put your code for running retail.py here.
 # remember to make sure that the output does not get printed to screen
 # and the output should be placed in a directory called retailresults (not /retailresults)
-# 
+
+python3 retail.py -r hadoop \
+   --hadoop-streaming-jar /usr/hdp/3.1.4.0-315/hadoop-mapreduce/hadoop-streaming.jar \
+   --jobconf mapred.reduce.tasks=4 \
+   hdfs:///user/zzw5237/retialdata \
+   --output-dir hdfs:///user/zzw5237/retailresults \
+   --no-output

@@ -10,6 +10,7 @@ Original file is located at
 from mrjob.job import MRJob
 
 class FairCount(MRJob):
+
   def mapper_init(self):
     self.cache = {}
 
@@ -22,15 +23,16 @@ class FairCount(MRJob):
         self.cache.clear()
 
   def mapper_final(self):
-    if self.cache is not empty:
+    if self.cache != 0:
       for w in self.cache:
         yield w, self.cache[w]
 
-   def reducer(self, key, values):
+  def reducer(self, key, values):
     yield (key, sum(values))
   
 
 class LetterCount(MRJob):
+
   def mapper(self, key, line):
     for symbol in line:
       if isletter(symbol):

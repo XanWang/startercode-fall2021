@@ -1,3 +1,10 @@
 # fill this in to run faircount.py
 # remember that no output should be printed to screen. instead, it should
 # go in a directory called faircount (not /faircount) in hdfs
+
+python3 faircount.py -r hadoop \
+   --hadoop-streaming-jar /usr/hdp/3.1.4.0-315/hadoop-mapreduce/hadoop-streaming.jar \
+   --jobconf mapred.reduce.tasks=4 \
+   hdfs:///ds410/warandpeace \
+   --output-dir hdfs:///user/zzw5237/faircount \
+   --no-output
